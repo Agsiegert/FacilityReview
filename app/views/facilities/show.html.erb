@@ -1,0 +1,32 @@
+<article>
+    <header>
+      <%= @facility.name %>
+    </header>
+    <p>
+      <%= image_tag(@facility.logo_url) %>
+    </p>
+    <table>
+      <tr>
+        <th>Phone:</th>
+        <td><%= number_to_phone(@facility.phone, area_code: true) %></td>
+      </tr>
+      <tr>
+        <th>Address:</th>
+        <td><%= @facility.street %><br>
+        <%= @facility.city %><br>
+        <%= @facility.state %><br>
+        <%= @facility.zip %>
+        </td>
+      </tr>
+      <tr>
+        <th>Details:</th>
+        <td><%= @facility.tagline %></td>
+      </tr>
+      <tr>
+        <th>iTriage Facility ID:</th>
+        <td><%= @facility.iTriage_id %></td>
+      </tr>
+    </table>
+  </article>
+
+  <%= link_to "Back to All Facilities", facilities_path %>
