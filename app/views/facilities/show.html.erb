@@ -28,6 +28,7 @@
       <footer>
       <nav>
         <%= link_to "Back to All Facilities", facilities_path, class: 'button' %>
+        <%= link_to pluralize(@facility.reviews.size, "review"), facility_reviews_path(@facility), class: 'button' %>
         <%= link_to 'Submit Review', "#", class: 'button' %>
     </nav>
   </footer>
