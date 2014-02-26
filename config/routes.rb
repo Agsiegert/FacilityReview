@@ -3,6 +3,11 @@ FacilityReview::Application.routes.draw do
   get "facilities" => "facilities#index"
   get "facilities/:id" => "facilities#show", as: "facility"
 
+  resources :facilities do
+    resources :reviews
+  end
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

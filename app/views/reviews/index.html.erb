@@ -1,0 +1,16 @@
+<header id="content-header">
+  <h1>Reviews for <%= link_to(@facility.name, @facility) %></h1>
+</header>
+
+<ol id="reviews">
+  <% @reviews.each do |review| %>
+  <li>
+      <span class="review">By: <%= review.name %></span><br>
+      <span class="user">Email:<%= review.email %></span><br>
+      <span calss="date">Submitted:<%= time_ago_in_words(review.created_at) %> ago</span>
+    <p>
+      &quot;<%= review.content %>&quot;
+    </p>
+  </li>
+  <% end %>
+</ol>
