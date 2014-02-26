@@ -9,7 +9,6 @@ Facility.create!([
   {
     iTriage_id: 1,
     name: "Urgent Cares",
-    logo_url: "http://placekitten.com/200/300",
     street: "1234 One Lane",
     city: "Denver",
     state: "CO",
@@ -20,7 +19,7 @@ Facility.create!([
   {
     iTriage_id: 2,
     name: "Urgent Careing",
-    logo_url: "http://placekitten.com/200/300",
+    logo_url: nil,
     street: "2234 Two Lane",
     city: "Denver",
     state: "CO",
@@ -31,7 +30,7 @@ Facility.create!([
   {
     iTriage_id: 3,
     name: "Urgent Careful",
-    logo_url: "http://placekitten.com/200/300",
+    logo_url: nil,
     street: "3234 Three Lane",
     city: "Denver",
     state: "CO",
