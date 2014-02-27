@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FacilityReview</title>
+  <title>Medical Facility Review</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<%= render "layouts/header" %>
+<%= notice %>
+
+<div id="wrapper">
+
+  <div id="container">
+
+    <section id="content">
+      <%= yield %>
+    </section>
+  </div>
+
+</div>
+
+<%= render "layouts/footer" %>
 
 </body>
 </html>

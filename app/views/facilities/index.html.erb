@@ -1,33 +1,38 @@
-<h1> <%= format_title(@facilities) %></h1>
-
-<ul>
+  <h1> <%= format_title(@facilities) %> found</h1>
+<ul id="facilities">
   <% @facilities.each do |facility| %>
-  <article>
-    <header>
-     <h1><%= link_to facility.name, facility_path(facility) %></h1>
-    </header>
-      <%= image_tag(facility.logo_url) %>
-    <table>
-      <tr>
-        <th>Phone:</th>
-        <td><%= number_to_phone(facility.phone, area_code: true) %></td>
-      </tr>
-      <tr>
-        <th>Address:</th>
-        <td><%= facility.street %></td>
-        <td><%= facility.city %></td>
-        <td><%= facility.state %></td>
-        <td><%= facility.zip %></td>
-      </tr>
-      <tr>
-        <th>Details:</th>
-        <td><%= facility.tagline.html_safe %></td>
-      </tr>
-      <tr>
-        <th>iTriage Facility ID:</th>
-        <td><%= facility.iTriage_id %></td>
-      </tr>
-    </table>
-  </article>
-  <%= link_to "Choose this Facility", facility_path(facility) %>
-<% end %>
+    <li>
+      <article class="facility">
+        <header>
+           <%= image_for(facility) %>
+          <h2><%= link_to facility.name, facility %></h2>
+        </header>
+        <p>
+          <%= truncate(facility.tagline.html_safe, length: 150, separator: ' ') %>
+        </p>
+        <table>
+          <tr>
+            <th>Phone</th>
+            <td><%= number_to_phone(facility.phone, area_code: true) %></td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>
+              <%= facility.street %>
+              <%= facility.city %>
+              <%= facility.state %>
+              <%= facility.zip %>
+            </td>
+          </tr>
+          <tr>
+            <th>iTriage ID</th>
+            <td><%= facility.iTriage_id %></td>
+          </tr>
+        </table>
+        <footer>
+         <%= link_to "Select Facility", facility_path(facility), class: 'button' %>
+        </footer>
+      </article>
+    </li>
+  <% end %>
+</ul>

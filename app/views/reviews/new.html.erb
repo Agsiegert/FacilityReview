@@ -1,0 +1,27 @@
+<header id="content-header">
+  <h1>New Review for <%= link_to(@facility.name, @facility) %></h1>
+</header>
+
+<%= form_for([@facility, @review]) do |f| %>
+  <%= render "shared/errors", object: @review %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :name %>
+        <%= f.text_field :name, size: 40, autofocus: true %>
+      </li>
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.text_field :email, size: 60 %>
+      </li>
+      <li class="required">
+        <%= f.label :content %>
+        <%= f.text_area :content, cols: 120, placeholder: "Tell us about your experience." %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit "Submit Review" %>
+      <%= link_to "Cancel", @facility, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "shows and individual facility" do
+describe "shows an individual facility" do
   it "shows the facility"do
 
     facility = Facility.create!(facility_attributes(phone: 1111111111))

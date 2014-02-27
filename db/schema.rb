@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140227023450) do
 
+
   create_table "facilities", force: true do |t|
     t.integer  "iTriage_id"
     t.string   "name"

@@ -1,32 +1,49 @@
-<article>
-    <header>
-      <%= @facility.name %>
-    </header>
-    <p>
-      <%= image_tag(@facility.logo_url) %>
-    </p>
-    <table>
-      <tr>
-        <th>Phone:</th>
-        <td><%= number_to_phone(@facility.phone, area_code: true) %></td>
-      </tr>
-      <tr>
-        <th>Address:</th>
-        <td><%= @facility.street %><br>
-        <%= @facility.city %><br>
-        <%= @facility.state %><br>
-        <%= @facility.zip %>
-        </td>
-      </tr>
-      <tr>
-        <th>Details:</th>
-        <td><%= @facility.tagline.html_safe %></td>
-      </tr>
-      <tr>
-        <th>iTriage Facility ID:</th>
-        <td><%= @facility.iTriage_id %></td>
-      </tr>
-    </table>
-  </article>
 
-  <%= link_to "Back to All Facilities", facilities_path %>
+<article id="facility" class="facility">
+    <header>
+      <%= image_for(@facility) %>
+      <h1><%= @facility.name %></h1>
+    </header>
+
+    <p>
+      <%= @facility.tagline.html_safe %>
+    </p>
+
+    <h3 class="no-rule">
+      <%= number_to_phone(@facility.phone, area_code: true) %>
+    </h3>
+
+    <h3> Address:</h3>
+    <p>
+      <%= @facility.street %><br>
+      <%= @facility.city %>,
+      <%= @facility.state %><br>
+      <%= @facility.zip %>
+    </p>
+    <h3>iTriage Facility ID:</h3>
+    <p>
+      <%= @facility.iTriage_id %>
+    </p>
+      <% if @facility.recent_reviews.any? %>
+        <h3>Recent Reviews</h3>
+        <ol id="reviews">
+          <% @facility.recent_reviews.each do |review| %>
+            <span class="review">Review By: <%= review.name %></span><br/>
+            <span calss="date">Submitted: <%= time_ago_in_words(review.created_at) %> ago</span><br/>
+            <span class="review">Review: "<%= review.content %>"</span><br><br/><br/>
+          <% end %>
+        </ol>
+        <p>
+          Read all <%= link_to pluralize(@facility.reviews.size, "review"), facility_reviews_path(@facility) %>
+        </p>
+      <% end %>
+      <footer>
+      <nav>
+        <%= link_to pluralize(@facility.reviews.size, "Review"), facility_reviews_path(@facility), class: 'button' %>
+        <%= link_to 'Submit Review', new_facility_review_path(@facility), class: 'button' %>
+        <%= link_to "Back to All Facilities", facilities_path, class: 'button' %>
+    </nav>
+  </footer>
+</article>
+
+
