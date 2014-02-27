@@ -1,0 +1,15 @@
+<fieldset id="location">
+  <ol>
+    <li class="required">
+      <%= form_tag("facilities", method: "post") do %>
+        <%= label_tag(:location) %>
+        <%= text_field_tag(:location) %>
+        <%= submit_tag("Submit") %>
+      <% end %>
+    </li>
+    OR
+    <br>
+    <br>
+      <%= link_to "Find Facilities Near Me", "#", class: 'button' %>
+  </ol>
+</fieldset>

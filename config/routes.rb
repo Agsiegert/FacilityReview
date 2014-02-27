@@ -1,5 +1,6 @@
 FacilityReview::Application.routes.draw do
-  root "facilities#index"
+  root "facilities#location"
+  post "facilities" => "facilities#location"
   get "facilities" => "facilities#index"
   get "facilities/:id" => "facilities#show", as: "facility"
 

@@ -26,9 +26,10 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
 gem 'faraday'
 gem 'json'
+gem "geocoder"
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -38,6 +39,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

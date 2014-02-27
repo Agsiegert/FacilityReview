@@ -1,4 +1,4 @@
-  <h1> <%= format_title(@facilities) %> found</h1>
+<h1> <%= link_to (format_title(@facilities)), root_path %> found</h1>
 <ul id="facilities">
   <% @facilities.each do |facility| %>
     <li>

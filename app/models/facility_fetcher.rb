@@ -1,4 +1,19 @@
 class FacilityFetcher
+  geocoded_by :location
+  geocoded_by :ip_address
+  after_validation :geocode
+
+
+  def location
+    params[:location]
+    # if params[:location] != nil
+    #   location = Geocoder.search(params[:location]).first.data["geometry"]["location"]
+    #     @longitude = location["lng"]
+    #     @latitude = location["lat"]
+
+    #     redirect_to facilities_path(@longitude, @latitude)
+    # end
+  end
 
   def self.get_facilities#(lat, long)
     # need to add string interpolation for lat and long to accept geocode data, hard coded with 80204
