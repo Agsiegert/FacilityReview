@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219184944) do
+ActiveRecord::Schema.define(version: 20140227023450) do
 
   create_table "facilities", force: true do |t|
     t.integer  "iTriage_id"
     t.string   "name"
-    t.integer  "phone"
+    t.string   "phone"
     t.integer  "distance"
     t.float    "lat"
     t.float    "lng"
@@ -30,5 +30,21 @@ ActiveRecord::Schema.define(version: 20140219184944) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "facility_fetchers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "content"
+    t.integer  "facility_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["facility_id"], name: "index_reviews_on_facility_id"
 
 end
