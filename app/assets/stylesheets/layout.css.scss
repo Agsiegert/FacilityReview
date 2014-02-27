@@ -1,6 +1,7 @@
 @import "colors";
 
 body {
+  padding-top: 80px;
   color: $primary-text-color;
   background-image: image-url("background.jpg");
   font-family: "Helvetica Neue", Helvetica, Arial;
@@ -9,6 +10,9 @@ body {
 header#page-header {
   background-color: $secondary-background-color;
   padding: 5px 25px;
+  width:100%;
+  position:fixed;
+  top:0px;
 
   h1 a {
     height: 50px;

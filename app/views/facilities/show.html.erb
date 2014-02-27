@@ -25,11 +25,24 @@
     <p>
       <%= @facility.iTriage_id %>
     </p>
+      <% if @facility.recent_reviews.any? %>
+        <h3>Recent Reviews</h3>
+        <ol id="reviews">
+          <% @facility.recent_reviews.each do |review| %>
+            <span class="review">Review By: <%= review.name %></span><br/>
+            <span calss="date">Submitted: <%= time_ago_in_words(review.created_at) %> ago</span><br/>
+            <span class="review">Review: "<%= review.content %>"</span><br><br/><br/>
+          <% end %>
+        </ol>
+        <p>
+          Read all <%= link_to pluralize(@facility.reviews.size, "review"), facility_reviews_path(@facility) %>
+        </p>
+      <% end %>
       <footer>
       <nav>
+        <%= link_to pluralize(@facility.reviews.size, "Review"), facility_reviews_path(@facility), class: 'button' %>
+        <%= link_to 'Submit Review', new_facility_review_path(@facility), class: 'button' %>
         <%= link_to "Back to All Facilities", facilities_path, class: 'button' %>
-        <%= link_to pluralize(@facility.reviews.size, "review"), facility_reviews_path(@facility), class: 'button' %>
-        <%= link_to 'Submit Review', "#", class: 'button' %>
     </nav>
   </footer>
 </article>
