@@ -4,4 +4,5 @@ class Review < ActiveRecord::Base
   validates :email, presence: true
   validates_format_of :email, with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
   validates :content, length: { minimum: 11}
+
 end

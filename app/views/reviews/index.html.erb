@@ -6,11 +6,14 @@
   <% @reviews.each do |review| %>
   <li>
       <span class="review">By: <%= review.name %></span><br>
-      <span class="user">Email:<%= review.email %></span><br>
-      <span calss="date">Submitted:<%= time_ago_in_words(review.created_at) %> ago</span>
+      <span class="user">Email: <%= review.email %></span><br>
+      <span calss="date">Submitted: <%= time_ago_in_words(review.created_at) %> ago</span>
     <p>
       &quot;<%= review.content %>&quot;
     </p>
   </li>
+    <p>
+      <%= link_to "Delete Review", facility_review_path(@facility, review), :method => :delete,  class: 'button' %>
+    </p>
   <% end %>
 </ol>
