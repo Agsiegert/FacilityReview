@@ -1,23 +1,18 @@
-class FacilityFetcher
-  geocoded_by :location
-  geocoded_by :ip_address
-  after_validation :geocode
+class FacilityFetcher < ActiveRecord::Base
 
+  validates :location, :presence => true
+  after_create :get_lat_long
 
-  def location
-    params[:location]
-    # if params[:location] != nil
-    #   location = Geocoder.search(params[:location]).first.data["geometry"]["location"]
-    #     @longitude = location["lng"]
-    #     @latitude = location["lat"]
-
-    #     redirect_to facilities_path(@longitude, @latitude)
-    # end
+  def get_lat_long
+    results = Geocoder.search(location)
+    latitude = results.first.data["geometry"]["location"]["lat"]
+    longitude = results.first.data["geometry"]["location"]["lng"]
+    update(:latitude => latitude, :longitude => longitude) if latitude && longitude
   end
 
-  def self.get_facilities#(lat, long)
+  def get_facilities
     # need to add string interpolation for lat and long to accept geocode data, hard coded with 80204
-    response = Faraday.get "https://www.itriagehealth.com/api/v1/medical_providers.json?search_model=medical_facilities&per_page=20&sort_by=featured&distance=25&medical_facility_categories=2&medical_facility_sub_categories=&family_member_id=null&lat=39.7347&lng=-105.0200"
+    response = Faraday.get "https://www.itriagehealth.com/api/v1/medical_providers.json?search_model=medical_facilities&per_page=20&sort_by=featured&distance=25&medical_facility_categories=2&medical_facility_sub_categories=&family_member_id=null&lat=#{latitude}&lng=#{longitude}"
     response.status
     facilities = JSON.parse(response.body)["results"].map do |facility|
       attributes = {

@@ -8,7 +8,7 @@
           <h2><%= link_to facility.name, facility %></h2>
         </header>
         <p>
-          <%= truncate(facility.tagline.html_safe, length: 150, separator: ' ') %>
+          <%= truncate(facility.tagline.to_s.html_safe, length: 150, separator: ' ') %>
         </p>
         <table>
           <tr>
