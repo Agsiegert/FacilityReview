@@ -6,7 +6,7 @@
     </header>
 
     <p>
-      <%= @facility.tagline %>
+      <%= @facility.tagline.html_safe %>
     </p>
 
     <h3 class="no-rule">
@@ -20,7 +20,6 @@
       <%= @facility.state %><br>
       <%= @facility.zip %>
     </p>
-
     <h3>iTriage Facility ID:</h3>
     <p>
       <%= @facility.iTriage_id %>

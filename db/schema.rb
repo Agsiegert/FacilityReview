@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226064007) do
+ActiveRecord::Schema.define(version: 20140227023450) do
+
 
   create_table "facilities", force: true do |t|
     t.integer  "iTriage_id"
     t.string   "name"
-    t.integer  "phone"
+    t.string   "phone"
     t.integer  "distance"
     t.float    "lat"
     t.float    "lng"
@@ -27,6 +28,11 @@ ActiveRecord::Schema.define(version: 20140226064007) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "facility_fetchers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
