@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
+  respond_to :html, :json
   before_action :set_facility
 
   def index
     @reviews = @facility.reviews
+    respond_with(@reviews)
   end
 
   def new
