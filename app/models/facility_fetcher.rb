@@ -11,7 +11,6 @@ class FacilityFetcher < ActiveRecord::Base
   end
 
   def get_facilities
-    # need to add string interpolation for lat and long to accept geocode data, hard coded with 80204
     response = Faraday.get "https://www.itriagehealth.com/api/v1/medical_providers.json?search_model=medical_facilities&per_page=20&sort_by=featured&distance=25&medical_facility_categories=2&medical_facility_sub_categories=&family_member_id=null&lat=#{latitude}&lng=#{longitude}"
     response.status
     facilities = JSON.parse(response.body)["results"].map do |facility|

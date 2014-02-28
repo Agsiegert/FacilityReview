@@ -16,7 +16,7 @@ describe "Navigate facilities" do
 
     visit facilities_path
 
-    click_link "Select Facility"
+    click_on "Select Facility"
 
     expect(current_path).to eq(facility_path(facility))
   end
