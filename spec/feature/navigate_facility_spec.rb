@@ -11,13 +11,11 @@ describe "Navigate facilities" do
     expect(current_path).to eq(facilities_path)
   end
 
-  it "can navigate from index page to the show page" do
-    facility = Facility.create!(facility_attributes)
+  it "can navigate from root/locaiton page to the index page" do
+    visit root_path
 
-    visit facilities_path
+    click_on "Find Facilities Near Me"
 
-    click_on "Select Facility"
-
-    expect(current_path).to eq(facility_path(facility))
+    expect(current_path).to eq(facilities_path)
   end
 end

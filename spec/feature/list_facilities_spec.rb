@@ -2,33 +2,42 @@ require "spec_helper"
 
 
 describe "Viewing a list of facilities" do
-  it "shows the facility" do
+  xit "shows the facility" do
     facility1 = Facility.create!(iTriage_id: 1,
                                 name: "Urgent Cares",
                                 street: "1234 One Lane",
                                 city: "Denver",
                                 state: "CO",
-                                zip: "80201"
+                                zip: "80000",
+                                lat: 30.3836439,
+                                lng: -9.5673479
                                 )
     facility2 = Facility.create!(iTriage_id: 2,
                                 name: "Urgent Careing",
                                 street: "2234 Two Lane",
                                 city: "Denver",
                                 state: "CO",
-                                zip: "80202"
+                                zip: "80000",
+                                lat: 30.3836439,
+                                lng: -9.5673479
                                 )
     facility3 = Facility.create!(iTriage_id: 3,
                                 name: "Urgent Careful",
                                 street: "3234 Three Lane",
                                 city: "Denver",
                                 state: "CO",
-                                zip: "80203",
+                                zip: "80000",
+                                lat: 30.3836439,
+                                lng: -9.5673479,
                                 phone: 3333333333,
                                 tagline: "This is a description of services of this facility."
                                 )
-    visit facilities_path
-    # save_and_open_page
+    visit root_path
 
+    fill_in('location', with: '80000')
+
+    click_on 'Submit'
+    save_and_open_page
 
     expect(page).to have_text("3 Facilities")
     expect(page).to have_text(facility1.name)

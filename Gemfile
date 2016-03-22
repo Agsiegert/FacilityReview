@@ -51,7 +51,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'capybara'
   gem 'launchy'
-  # gem 'jazz_hands'
+  gem 'pry-rails'
+  gem 'jazz_hands'
 end
 
 group :production do
