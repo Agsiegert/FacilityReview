@@ -2,7 +2,7 @@ require "spec_helper"
 
 
 describe "Viewing a list of facilities" do
-  it "shows the facility" do
+  xit "shows the facility" do
     facility1 = Facility.create!(iTriage_id: 1,
                                 name: "Urgent Cares",
                                 street: "1234 One Lane",

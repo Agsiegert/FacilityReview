@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe "A facility" do
-  xit "gets it facilities from iTriage API" do
+  it "gets it facilities from iTriage API" do
     visit root_path
-    fill_in "zipcode", with: "80204"
+    fill_in "location", with: "80204"
     click_on "Find Facilities"
-    expect(page).to have_text("Denver")
+
+    expect(page).to have_text("20 Facilities found")
   end
 
   it "has many reviews" do

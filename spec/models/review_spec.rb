@@ -13,14 +13,14 @@ describe "A review" do
   it "example attributes are valid" do
     review = Review.new(review_attributes)
 
-    expect(review.valid?).to be_true
+    expect(review.valid?).to be_truthy
   end
 
   it "requires a name" do
     review = Review.new(name: "")
 
-    expect(review.valid?).to be_false
-    expect(review.errors[:name].any?).to be_true
+    expect(review.valid?).to be_falsey
+    expect(review.errors[:name].any?).to be_truthy
   end
 
   xit "should change name to initials" do
@@ -29,8 +29,8 @@ describe "A review" do
   it "requires an email" do
     review = Review.new(email: "")
 
-    expect(review.valid?).to be_false
-    expect(review.errors[:email].any?).to be_true
+    expect(review.valid?).to be_falsey
+    expect(review.errors[:email].any?).to be_truthy
   end
 
   xit "should have a valid email" do
@@ -39,15 +39,15 @@ describe "A review" do
   it "requires content" do
     review = Review.new(content: "")
 
-    expect(review.valid?).to be_false
-    expect(review.errors[:content].any?).to be_true
+    expect(review.valid?).to be_falsey
+    expect(review.errors[:content].any?).to be_truthy
   end
 
   it "requires content over 10 characters" do
     review = Review.new(content: "X" * 10)
 
-    expect(review.valid?).to be_false
-    expect(review.errors[:content].any?).to be_true
+    expect(review.valid?).to be_falsey
+    expect(review.errors[:content].any?).to be_truthy
   end
 
   # it "accepts star values of 1 through 5" do
@@ -55,8 +55,8 @@ describe "A review" do
   #   stars.each do |star|
   #     review = Review.new(stars: star)
 
-  #     expect(review.valid?).to be_false
-  #     expect(review.errors[:stars].any?).to be_false
+  #     expect(review.valid?).to be_falsey
+  #     expect(review.errors[:stars].any?).to be_falsey
   #   end
   # end
 
@@ -65,8 +65,8 @@ describe "A review" do
   #   stars.each do |star|
   #     review = Review.new(stars: star)
 
-  #     expect(review.valid?).to be_false
-  #     expect(review.errors[:stars].any?).to be_true
+  #     expect(review.valid?).to be_falsey
+  #     expect(review.errors[:stars].any?).to be_truthy
   #     expect(review.errors[:stars].first).to eq("must be between 1 and 5")
   #   end
   # end

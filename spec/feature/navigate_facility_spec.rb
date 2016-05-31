@@ -12,12 +12,11 @@ describe "Navigate facilities" do
   end
 
   it "can navigate from index page to the show page" do
-    facility = Facility.create!(facility_attributes)
+    visit root_path
+    click_on "Find Facilities Near Me"
 
-    visit facilities_path
+    first(:link, 'Select Facility').click
 
-    click_on "Select Facility"
-
-    expect(current_path).to eq(facility_path(facility))
+    expect(current_path).to eq(facility_path(1))
   end
 end
