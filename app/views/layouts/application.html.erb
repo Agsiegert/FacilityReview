@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= scrivito_head_tags %>
   <title>Medical Facility Review</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -17,6 +18,7 @@
 
     <section id="content">
       <%= yield %>
+      <%= scrivito_body_tags %>
     </section>
   </div>
 

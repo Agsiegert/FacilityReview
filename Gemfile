@@ -29,6 +29,7 @@ gem 'faraday'
 gem 'json'
 gem "geocoder"
 gem 'responders', '~> 2.0'
+gem "scrivito"
 
 
 group :doc do

@@ -15,5 +15,6 @@
  *= require facilities
  *= require buttons
  *= require forms
+ *= require scrivito
  *= require_tree .
  */
