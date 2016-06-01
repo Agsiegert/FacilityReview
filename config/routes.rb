@@ -5,6 +5,9 @@ FacilityReview::Application.routes.draw do
   get "facilities/:id" => "facilities#show", as: "facility"
 
   resources :facilities do
+    member do
+      post 'create_scrivito_obj'
+    end
     resources :reviews
   end
 
